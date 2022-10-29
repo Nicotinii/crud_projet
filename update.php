@@ -24,10 +24,10 @@ if (isset($_POST['update'])) { //si tout est declarer dans le post(form) c'est b
 
     if ($result == TRUE) { //si la connexion est faite, sa marche !
 
-        echo "Maj fait !";
+        $maj = "Maj fait ! <br> <a class='btn btn-danger' href='index.php'>Liste des livres</a> ";
     } else { //sa marche pas !
 
-        echo "Error:" . $sql . "<br>" . $connexion->error;
+        $maj = "Error:" . $sql . "<br>" . $connexion->error;
     }
 }
 
@@ -45,7 +45,7 @@ if (isset($_GET['id'])) { //si l'id est déclaré c'est bon
 
             $titre = $row['Titre']; //def : var : input[name]
 
-            $auteur = $row['autor_id'];
+            $auteur = $row['auteur'];
 
             $date = $row['Date'];
 
@@ -88,7 +88,6 @@ if (isset($_GET['id'])) { //si l'id est déclaré c'est bon
                 <fieldset>
                     <!-- ça fait une jolie bordure -->
 
-                    <legend>Update</legend><!-- ça fait un titre au niveau de la bordure -->
 
                     Titre:<br>
 
@@ -101,7 +100,7 @@ if (isset($_GET['id'])) { //si l'id est déclaré c'est bon
 
                     Auteur:<br>
 
-                    <select name="autor_id">
+                    <select name="auteur">
 
                         <option value="choix"> choisi</option>
                         <?php
@@ -131,7 +130,9 @@ if (isset($_GET['id'])) { //si l'id est déclaré c'est bon
 
                     <br><br>
 
-                    <input type="submit" value="Update" name="update">
+                    <input class="btn btn-primary" type="submit" value="Update" name="update">
+
+                    <h1 class=text-center><?php echo $maj ?></h1>
 
                 </fieldset>
 

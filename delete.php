@@ -7,7 +7,7 @@ if (isset($_GET['id'])) { //si l'id est déclaré c'est bon
 
     $user_id = $_GET['id']; // def : var : input[id]
 
-    $sql = "DELETE FROM `users` WHERE `id`='$user_id'"; //def : var : sql command "SUPPR DANS 'table' OÙ '$id'
+    $sql = "DELETE FROM `manga` WHERE `id`='$user_id'"; //def : var : sql command "SUPPR DANS 'table' OÙ '$id'
 
     $result = $connexion->query($sql); //def : var : Exécute une requête sur la base de données(* users)
 
