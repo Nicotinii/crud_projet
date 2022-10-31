@@ -1,12 +1,5 @@
 <?php
-session_start();
-include "config.php"; //ajoute config
-
-$datas = $connexion->query('SELECT * FROM autor');
-if (!isset($_SESSION['use'])) //  Si la session n'est pas définie, rediriger vers la page de connexion.
-{
-    header("Location:Login.php");
-}
+include "security.php";
 
 if (isset($_POST['submit'])) { //si tout est declarer dans le post(form) c'est bon
 

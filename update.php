@@ -1,6 +1,5 @@
 <?php
-session_start();
-include "config.php"; //ajoute config
+include "security.php";
 
 
 if (isset($_POST['update'])) { //si tout est declarer dans le post(form) c'est bon

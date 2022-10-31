@@ -1,6 +1,5 @@
 <?php
-session_start();
-include "config.php"; //ajoute config
+include "security.php";
 
 
 if (isset($_GET['id'])) { //si l'id est déclaré c'est bon
