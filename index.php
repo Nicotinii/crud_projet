@@ -77,6 +77,32 @@ $result = $connexion->query($sql); //def : var : Exécute une requête sur la ba
             <tbody>
                 <!--  permet de regrouper un ou plusieurs éléments <tr> afin de former le corps d'un tableau HTML-->
 
+                <html>
+                <form method="POST" action="">
+                    Rechercher un mot : <input type="text" name="recherche">
+                    <input type="SUBMIT" value="Search!">
+                </form>
+
+                </html>
+
+                <?php
+                // Récupère la recherche
+                $recherche = isset($_POST['recherche']) ? $_POST['recherche'] : '';
+
+                // la requete mysql
+                $q = $connexion->query(
+                    "SELECT manga.*, autor.name FROM manga JOIN autor ON autor.id=manga.autor_id
+      WHERE title LIKE '%$recherche%'
+      OR autor_id LIKE '%$recherche%'
+      LIMIT 100"
+                );
+
+                // affichage du résultat
+                while ($r = mysqli_fetch_array($q)) {
+                    echo 'Résultat de la recherche: ' . $r['title'] . ', ' . $r['autor_id'] . ' <br />';
+                }
+                ?>
+
                 <?php
 
                 if ($result->num_rows > 0) { //si - mysqli_num_rows — Gets the number of rows in the result set
@@ -84,6 +110,9 @@ $result = $connexion->query($sql); //def : var : Exécute une requête sur la ba
                     while ($row = $result->fetch_assoc()) { //tant que - Récupère les donnés des rows
 
                 ?>
+
+
+
 
                         <tr>
 
